@@ -69,11 +69,9 @@ function SortByNavbar(props) {
     };
 
     const searchByCompany = (airlineCompanyList, flag) => {
-        flag
-            ? searchByAirlines.push(airlineCompanyList)
-            : searchByAirlines.filter(
-                  (airline) => airline !== airlineCompanyList
-              );
+        if (flag) {
+            searchByAirlines.push(airlineCompanyList);
+        }
         const data = availableAirlineCompanies.filter((flight) =>
             searchByAirlines.includes(
                 flight.flight.legs[0].segments[0].airline.caption
