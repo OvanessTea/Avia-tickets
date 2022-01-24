@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+main {
+    display: flex;
+    width: 960px;
+    background-color: #d9d9d9;
+}
+.sidebar {
+    width: 256px;
+    margin-top: 35px;
+    padding-top: 30px;
+    padding-left: 10px;
+    background-color: #fff;
+}
+.content {
+    padding: 20px 45px 460px 20px;
+    background-color: #fff;
+}
+
+.flight-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.flight-list button {
+    margin-top: 15px;
+    padding: 0px 25px;
+}
+.flight-list #sort-form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 10px;
+}
+#sort-form p {
+    font-weight: 800;
+    color: #425668;
+    margin-bottom: 10px;
+}
+#contactChoice1,
+#contactChoice2,
+#contactChoice3,
+#oneTransfer,
+#withoutTransfer,
+.airlines {
+    margin-right: 3px;
+}
+.sort-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.airline-companies {
+    display: flex;
+    flex-direction: column;
+}
+.airlinesOffers {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+.airlinesOffers span {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+#best-price {
+    position: absolute;
+    right: 0px;
+}
+
+.flight-card {
+    display: inline-block;
+    width: 640px;
+    margin-bottom: 30px;
+}
+.legs-delimiter {
+    border: none;
+    height: 2px;
+    color: #0087c9;
+    background-color: #0087c9;
+}
+.flight-price {
+    background-color: #0087c9;
+    color: #fff;
+    text-align: right;
+    padding: 5px 15px;
+}
+.flight-price h2 {
+    font-weight: 400;
+}
+.flight-price p {
+    font-weight: 400;
+    font-size: 13px;
+}
+.flight-way {
+    display: flex;
+    padding: 10px;
+    font-weight: 500;
+}
+.airport-label {
+    display: flex;
+    flex-direction: row;
+}
+.airport-label p {
+    margin-right: 15px;
+}
+.dates {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px;
+}
+.time-departure,
+.time-arrive,
+.flight-duration {
+    display: flex;
+    align-items: flex-end;
+    font-size: 16px;
+}
+
+.time-departure p,
+.time-arrive p {
+    margin-right: 10px;
+    font-size: 20px;
+}
+.flight-duration {
+    align-items: flex-end;
+}
+#blind-hr {
+    position: relative;
+    border: none;
+    height: 1px;
+    color: #d1d0d0;
+    background-color: #d1d0d0;
+    width: 100%;
+}
+.blue-span {
+    color: #0087c9;
+    margin-right: 5px;
+}
+.number-of-transfers {
+    position: relative;
+    padding-top: 5px;
+    margin-bottom: 15px;
+}
+.number-of-transfers p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffb168;
+    background: #fff;
+    padding: 0 10px;
+}
+.number-of-transfers hr {
+    position: relative;
+    left: 5%;
+    width: 90%;
+}
+.airline {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+.btn {
+    cursor: pointer;
+}
+.choose-btn {
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    font-size: 15px;
+    border: 0;
+    background-color: #ffb168;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.2s linear;
+}
+.choose-btn:hover {
+    background-color: #eb770b;
+}
