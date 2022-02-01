@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Airflights-project/static/css/main.2dabb391.css",
-    "main.js": "/Airflights-project/static/js/main.19ee9422.js",
-    "index.html": "/Airflights-project/index.html",
-    "main.2dabb391.css.map": "/Airflights-project/static/css/main.2dabb391.css.map",
-    "main.19ee9422.js.map": "/Airflights-project/static/js/main.19ee9422.js.map"
+    "main.css": "/Avia-tickets/static/css/main.2dabb391.css",
+    "main.js": "/Avia-tickets/static/js/main.19ee9422.js",
+    "index.html": "/Avia-tickets/index.html",
+    "main.2dabb391.css.map": "/Avia-tickets/static/css/main.2dabb391.css.map",
+    "main.19ee9422.js.map": "/Avia-tickets/static/js/main.19ee9422.js.map"
   },
   "entrypoints": [
     "static/css/main.2dabb391.css",
