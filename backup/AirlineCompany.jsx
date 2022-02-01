@@ -5,14 +5,18 @@ import { AirlineContext } from "../../context";
 function AirlineCompany(props) {
     const { airline, flights, searchByCompany = Function.prototype } = props;
     const [minimumPrice, setMinimumPrice] = useState(200000);
-    const { addAirlineCompany, removeAirlineCompany } =
-        useContext(AirlineContext);
+    const {
+        addAirlineCompany,
+        removeAirlineCompany,
+        airlineCompanyList = [],
+    } = useContext(AirlineContext);
 
     const toggleAirlineCompanyChecke = (e) => {
         e.target.checked
             ? addAirlineCompany(airline)
             : removeAirlineCompany(airline);
-        searchByCompany(airline, e.target.checked);
+        console.log(airlineCompanyList);
+        searchByCompany(airlineCompanyList, flights);
     };
 
     useEffect(() => {
@@ -21,21 +25,15 @@ function AirlineCompany(props) {
                 flight.flight.legs[0].segments[0].airline.caption === airline
         );
         let minPrice;
-        if (flightsFilterByCompany.length === 1) {
-            minPrice = flightsFilterByCompany[0].flight.price.total.amount;
-        } else {
-            for (let i = 0; i < flightsFilterByCompany.length - 1; i++) {
-                if (
-                    flightsFilterByCompany[i].flight.price.total.amount <
-                    flightsFilterByCompany[i + 1]
-                ) {
-                    minPrice =
-                        flightsFilterByCompany[i].flight.price.total.amount;
-                }
+        for (let i = 0; i < flightsFilterByCompany.length - 1; i++) {
+            if (
+                flightsFilterByCompany[i].flight.price.total.amount <
+                flightsFilterByCompany[i + 1]
+            ) {
+                minPrice = flightsFilterByCompany[i].flight.price.total.amount;
             }
         }
         setMinimumPrice(minPrice);
-        // eslint-disable-next-line
     }, []);
     return (
         <label htmlFor={airline} className="airlinesOffers">

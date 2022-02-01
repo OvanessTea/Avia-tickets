@@ -1,18 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AirlineCompany } from "./AirlineCompany";
+import { AirlineContext } from "../../context";
 
 function SortByNavbar(props) {
     const { flights, filterResults } = props;
+    const { airlineCompanyList = [] } = useContext(AirlineContext);
     const [sortByChoice, setSortByChoice] = useState("incPrice");
     const [oneTransferFlag, setOneTransferFlag] = useState(true);
     const [noTransferFlag, setNoTransferFlag] = useState(true);
     const [minimumPrice, setMinimumPrice] = useState(0);
     const [maximumPrice, setMaximumPrice] = useState(200000);
     const [airlines, setAirlines] = useState([]);
-    const searchByAirlines = [];
-    const [availableAirlineCompanies, setAvailableAirlineCompanies] = useState(
-        []
-    );
 
     const filterNumberOfTransfers = (data) => {
         if (oneTransferFlag !== noTransferFlag) {
@@ -68,16 +66,13 @@ function SortByNavbar(props) {
         return data;
     };
 
-    const searchByCompany = (airlineCompanyList, flag) => {
-        if (flag) {
-            searchByAirlines.push(airlineCompanyList);
-        }
-        const data = availableAirlineCompanies.filter((flight) =>
-            searchByAirlines.includes(
+    const searchByCompany = (airlineCompanyList, flights) => {
+        flights = flights.filter((flight) =>
+            airlineCompanyList.includes(
                 flight.flight.legs[0].segments[0].airline.caption
             )
         );
-        filterResults(data);
+        filterResults(flights);
     };
 
     useEffect(() => {
@@ -99,7 +94,6 @@ function SortByNavbar(props) {
             }
         }
         setAirlines(airlinesList);
-        setAvailableAirlineCompanies(data);
         filterResults(data);
         // eslint-disable-next-line
     }, [
@@ -154,6 +148,7 @@ function SortByNavbar(props) {
                         type="checkbox"
                         id="oneTransfer"
                         name="transfer"
+                        required
                         onChange={(e) => setOneTransferFlag(e.target.checked)}
                     />
                     - 1 пересадка
@@ -164,6 +159,7 @@ function SortByNavbar(props) {
                         type="checkbox"
                         id="withoutTransfer"
                         name="transfer"
+                        required
                         onChange={(e) => setNoTransferFlag(e.target.checked)}
                     />
                     - без пересадок
