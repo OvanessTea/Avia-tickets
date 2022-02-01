@@ -1,5 +1,4 @@
 # React App Project
-<<<<<<< HEAD
 
 This is a simple example of using a JSON file in a React app.
 
