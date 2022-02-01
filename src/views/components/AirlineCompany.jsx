@@ -12,7 +12,7 @@ function AirlineCompany(props) {
         e.target.checked
             ? addAirlineCompany(airline)
             : removeAirlineCompany(airline);
-        searchByCompany(airline, e.target.checked);
+        searchByCompany();
     };
 
     useEffect(() => {

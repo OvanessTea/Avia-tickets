@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AirlineCompany } from "./AirlineCompany";
+import { AirlineContext } from "../../context";
 
 function SortByNavbar(props) {
     const { flights, filterResults } = props;
+    const { airlineCompanyList } = useContext(AirlineContext);
     const [sortByChoice, setSortByChoice] = useState("incPrice");
     const [oneTransferFlag, setOneTransferFlag] = useState(true);
     const [noTransferFlag, setNoTransferFlag] = useState(true);
     const [minimumPrice, setMinimumPrice] = useState(0);
     const [maximumPrice, setMaximumPrice] = useState(200000);
     const [airlines, setAirlines] = useState([]);
-    const searchByAirlines = [];
     const [availableAirlineCompanies, setAvailableAirlineCompanies] = useState(
         []
     );
@@ -68,15 +69,17 @@ function SortByNavbar(props) {
         return data;
     };
 
-    const searchByCompany = (airlineCompanyList, flag) => {
-        if (flag) {
-            searchByAirlines.push(airlineCompanyList);
+    const searchByCompany = () => {
+        if (airlineCompanyList.length > 0) {
+            var data = availableAirlineCompanies.filter((flight) =>
+                airlineCompanyList.includes(
+                    flight.flight.legs[0].segments[0].airline.caption
+                )
+            );
+        } else {
+            data = require("../../flights");
+            data = data.result.flights;
         }
-        const data = availableAirlineCompanies.filter((flight) =>
-            searchByAirlines.includes(
-                flight.flight.legs[0].segments[0].airline.caption
-            )
-        );
         filterResults(data);
     };
 
